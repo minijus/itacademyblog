@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { PostService } from '../post.service';
 import { Post } from '../shared/post';
 
@@ -14,6 +15,8 @@ export class HomeComponent implements OnInit {
   constructor(private postService: PostService) {}
 
   ngOnInit(): void {
-    this.posts = this.postService.loadPosts();
+    this.posts = this.postService
+      .loadPosts()
+      .pipe(map((posts) => posts.reverse()));
   }
 }

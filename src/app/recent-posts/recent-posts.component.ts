@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { PostService } from '../post.service';
+import { Post } from '../shared/post';
 
 @Component({
   selector: 'app-recent-posts',
@@ -8,13 +10,13 @@ import { PostService } from '../post.service';
   styleUrls: ['./recent-posts.component.scss'],
 })
 export class RecentPostsComponent implements OnInit {
-  posts$: any;
+  posts$: Observable<Post[]>;
 
   constructor(private postService: PostService) {}
 
   ngOnInit(): void {
     this.posts$ = this.postService
       .loadPosts()
-      .pipe(map((posts) => posts.reverse().slice(0, 3)));
+      .pipe(map((posts: Post[]) => posts.reverse().slice(0, 3)));
   }
 }

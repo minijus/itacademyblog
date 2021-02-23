@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { PostService } from '../post.service';
@@ -13,6 +13,7 @@ import { Post } from '../shared/post';
 export class PostDetailsComponent implements OnInit {
   postId: string;
   post$: Observable<Post>;
+  post: Post;
 
   constructor(
     private route: ActivatedRoute,
@@ -21,10 +22,18 @@ export class PostDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.post$ = this.route.paramMap.pipe(
-      switchMap((params) => {
+      switchMap((params: ParamMap) => {
         const id = params.get('id');
         return this.postService.getPost(id);
       })
     );
+  }
+
+  addLike(post: Post): void {
+    this.postService.addLike(post).subscribe();
+  }
+
+  removeLike(post: Post): void {
+    this.postService.removeLike(post).subscribe();
   }
 }

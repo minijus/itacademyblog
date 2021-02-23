@@ -1,0 +1,55 @@
+<form #postForm="ngForm" (submit)="submitForm()">
+  <div class="form-group">
+    <label for="author">Author</label>
+    <input
+      class="form-control"
+      id="author"
+      name="postAuthor"
+      type="text"
+      pattern="^[A-Za-z ]*$"
+      [(ngModel)]="post.author"
+      #author="ngModel"
+      required
+    />
+    <div [hidden]="author.valid || author.pristine">
+      <div *ngIf="author.errors?.pattern">Only alphabetical characters</div>
+      <div *ngIf="author.errors?.required">Author is required.</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="title">Post Title</label>
+    <input
+      class="form-control"
+      id="title"
+      name="postTitle"
+      type="text"
+      [(ngModel)]="post.title"
+      #title="ngModel"
+      required
+    />
+    <div [hidden]="title.valid || title.pristine">
+      <div *ngIf="title.errors?.required">Post Title is required.</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="content">Post Content</label>
+    <input
+      class="form-control"
+      id="content"
+      name="postContent"
+      type="text"
+      [(ngModel)]="post.content"
+      #content="ngModel"
+      required
+      minlength="5"
+    />
+    <div [hidden]="content.valid || content.pristine">
+      <div *ngIf="content.errors?.required">Post Content is required.</div>
+      <div *ngIf="content.errors?.minlength">Post Content too short.</div>
+    </div>
+  </div>
+  <button class="btn btn-primary">Submit!</button>
+  <button class="btn btn-secondary" type="button" (click)="reset()">
+    Reset!
+  </button>
+</form>

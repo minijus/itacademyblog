@@ -28,7 +28,8 @@
       "id": "3",
       "author": "Jurgis",
       "title": "Post 4",
-      "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem commodi cupiditate dolorem doloremque dolorum fugiat saepe sint soluta ullam voluptates voluptatum?"
+      "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem commodi cupiditate dolorem doloremque dolorum fugiat saepe sint soluta ullam voluptates voluptatum?",
+      "likes": 0
     },
     {
       "id": "4",
@@ -44,7 +45,50 @@
       "title": "Post 6",
       "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem commodi cupiditate dolorem doloremque dolorum fugiat saepe sint soluta ullam voluptates voluptatum?",
       "img": "assets/photo-5.jpeg",
-      "likes": 0
+      "likes": 2
+    },
+    {
+      "author": "",
+      "content": "",
+      "title": "",
+      "id": "KLFLxpC"
+    },
+    {
+      "author": "Jurgis",
+      "content": "Hello",
+      "title": "Hi",
+      "id": "Iqpg6HF"
+    },
+    {
+      "author": "Jurgis",
+      "content": "Panasu, kad veikia",
+      "title": "Sveiki atvyke",
+      "id": "MHM8ndE"
+    },
+    {
+      "author": "Jurgis",
+      "title": "Sveiki atvyke i akademija",
+      "content": "KodasKodasKodasKodasKodasKodas",
+      "id": "jsfC8ow",
+      "likes": null
+    },
+    {
+      "author": "",
+      "title": "",
+      "content": "",
+      "id": "7e6G4-F"
+    },
+    {
+      "author": "asdadad",
+      "title": "asdadad",
+      "content": "asdasdada",
+      "id": "mZcDTC3"
+    },
+    {
+      "author": "asdfadsfas",
+      "title": "asdfas",
+      "content": "asdfasf",
+      "id": "9DE5MQv"
     }
   ]
 }
