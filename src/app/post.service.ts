@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { catchError, mapTo } from 'rxjs/operators';
 import { Post } from './shared/post';
 
 @Injectable({
@@ -11,6 +12,15 @@ export class PostService {
 
   loadPosts(): Observable<Post[]> {
     return this.httpClient.get<Post[]>('/api/posts');
+  }
+
+  validateName(name): Observable<boolean> {
+    return this.httpClient
+      .get<unknown>(`https://empty-poetry-bf01.akademija.workers.dev/${name}`)
+      .pipe(
+        mapTo(true),
+        catchError(() => of(false))
+      );
   }
 
   addPost(post: Post): Observable<Post> {

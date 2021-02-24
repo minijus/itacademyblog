@@ -1,19 +1,16 @@
-<form #postForm="ngForm" (submit)="submitForm()">
+<form [formGroup]="postForm" (submit)="submitForm()">
   <div class="form-group">
     <label for="author">Author</label>
     <input
       class="form-control"
       id="author"
-      name="postAuthor"
       type="text"
-      pattern="^[A-Za-z ]*$"
-      [(ngModel)]="post.author"
-      #author="ngModel"
-      required
+      formControlName="author"
     />
     <div [hidden]="author.valid || author.pristine">
       <div *ngIf="author.errors?.pattern">Only alphabetical characters</div>
       <div *ngIf="author.errors?.required">Author is required.</div>
+      <div *ngIf="author.errors?.blockedName">Author is blocked.</div>
     </div>
   </div>
   <div class="form-group">
@@ -21,11 +18,8 @@
     <input
       class="form-control"
       id="title"
-      name="postTitle"
       type="text"
-      [(ngModel)]="post.title"
-      #title="ngModel"
-      required
+      formControlName="title"
     />
     <div [hidden]="title.valid || title.pristine">
       <div *ngIf="title.errors?.required">Post Title is required.</div>
@@ -36,20 +30,29 @@
     <input
       class="form-control"
       id="content"
-      name="postContent"
       type="text"
-      [(ngModel)]="post.content"
-      #content="ngModel"
-      required
-      minlength="5"
+      formControlName="content"
     />
+    <div>
+      You have {{ charsRemaining$ | async }}/{{ maxContent }} characters
+      remaining
+    </div>
     <div [hidden]="content.valid || content.pristine">
       <div *ngIf="content.errors?.required">Post Content is required.</div>
       <div *ngIf="content.errors?.minlength">Post Content too short.</div>
+      <div *ngIf="content.errors?.explicitLanguage">
+        Explicit language used in post:
+        {{ content.errors?.explicitLanguage.words }}
+      </div>
     </div>
   </div>
   <button class="btn btn-primary">Submit!</button>
   <button class="btn btn-secondary" type="button" (click)="reset()">
     Reset!
   </button>
+  <div [hidden]="postForm.pristine || postForm.valid">
+    <div *ngIf="postForm.errors?.authorNameInEmail">
+      Using the authors name in the title is prohibited by GDPR
+    </div>
+  </div>
 </form>
