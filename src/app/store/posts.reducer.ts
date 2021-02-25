@@ -1,3 +1,4 @@
+import { createEntityAdapter, EntityState } from '@ngrx/entity';
 import { createReducer, on } from '@ngrx/store';
 import { Post } from '../shared/post';
 import { loadPosts, loadPostsSuccess } from './posts.actions';
@@ -5,18 +6,17 @@ import { loadPosts, loadPostsSuccess } from './posts.actions';
 
 export const postsFeatureKey = 'posts';
 
-export interface PostsState {
-  data: Post[];
+export interface PostsState extends EntityState<Post>{
   loading: boolean;
   loaded: boolean;
 }
 
-export const initialState: PostsState = {
-  data: [],
+export const adapter = createEntityAdapter<Post>();
+
+export const initialState: PostsState = adapter.getInitialState({
   loading: false,
   loaded: false
-};
-
+});
 
 export const postsReducer = createReducer(
   initialState,
@@ -28,12 +28,11 @@ export const postsReducer = createReducer(
     };
   }),
   on(loadPostsSuccess, (state, action) => {
-    return {
+    return adapter.addMany(action.posts, {
       ...state,
-      data: action.posts,
       loading: false,
-      loaded: true
-    };
+      loaded: true,
+    });
   })
 );
 

@@ -31,6 +31,7 @@
     "@angular/cli": "~11.2.2",
     "@angular/compiler-cli": "~11.2.3",
     "@ngrx/effects": "^11.0.1",
+    "@ngrx/entity": "^11.0.1",
     "@ngrx/schematics": "^11.0.1",
     "@ngrx/store": "^11.0.1",
     "@ngrx/store-devtools": "^11.0.1",
