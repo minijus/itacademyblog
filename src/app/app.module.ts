@@ -2,6 +2,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { AppRoutingModule } from './app-routing.module';
@@ -11,6 +12,7 @@ import { HomeComponent } from './home/home.component';
 import { PostDetailsComponent } from './post-details/post-details.component';
 import { PostComponent } from './post/post.component';
 import { RecentPostsComponent } from './recent-posts/recent-posts.component';
+import { PostsEffects } from './store/posts.effects';
 import { postsFeatureKey, postsReducer, } from './store/posts.reducer';
 
 @NgModule({
@@ -31,6 +33,7 @@ import { postsFeatureKey, postsReducer, } from './store/posts.reducer';
       [postsFeatureKey]: postsReducer
     }),
     StoreDevtoolsModule.instrument(),
+    EffectsModule.forRoot([PostsEffects]),
   ],
   providers: [],
   bootstrap: [AppComponent],

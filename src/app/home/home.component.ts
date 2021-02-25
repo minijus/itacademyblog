@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { combineLatest, Observable } from 'rxjs';
-import { filter, map, take, tap } from 'rxjs/operators';
-import { PostService } from '../post.service';
+import { filter, take, tap } from 'rxjs/operators';
 import { Post } from '../shared/post';
 import { loadPosts } from '../store/posts.actions';
-import { selectIsPostsLoaded, selectIsPostsLoading } from '../store/posts.selectors';
+import { selectIsPostsLoaded, selectIsPostsLoading, selectPosts } from '../store/posts.selectors';
 
 @Component({
   selector: 'app-home',
@@ -15,9 +14,9 @@ import { selectIsPostsLoaded, selectIsPostsLoading } from '../store/posts.select
 export class HomeComponent implements OnInit {
   public isPostsLoading$: Observable<boolean>;
   public isPostsLoaded$: Observable<boolean>;
-  public posts: Observable<Post[]>;
+  public posts$: Observable<Post[]>;
 
-  constructor(private postService: PostService, private store: Store) {}
+  constructor(private store: Store) {}
 
   ngOnInit(): void {
     this.isPostsLoading$ = this.store.select(selectIsPostsLoading);
@@ -31,8 +30,6 @@ export class HomeComponent implements OnInit {
       })
     ).subscribe();
 
-    this.posts = this.postService
-      .loadPosts()
-      .pipe(map((posts) => posts.reverse()));
+    this.posts$ = this.store.select(selectPosts);
   }
 }

@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import { Post } from '../shared/post';
-import { loadPosts } from './posts.actions';
+import { loadPosts, loadPostsSuccess } from './posts.actions';
 
 
 export const postsFeatureKey = 'posts';
@@ -25,6 +25,14 @@ export const postsReducer = createReducer(
       ...state,
       loading: true,
       loaded: false
+    };
+  }),
+  on(loadPostsSuccess, (state, action) => {
+    return {
+      ...state,
+      data: action.posts,
+      loading: false,
+      loaded: true
     };
   })
 );
