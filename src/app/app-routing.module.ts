@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthorPageComponent } from './author-page/author-page.component';
+import { AuthorsPageComponent } from './authors-page/authors-page.component';
 import { CategoryPageComponent } from './category-page/category-page.component';
 import { CreatePostComponent } from './create-post/create-post.component';
 import { HomeComponent } from './home/home.component';
@@ -10,6 +12,8 @@ const routes: Routes = [
   { path: 'posts/add', component: CreatePostComponent },
   { path: 'post/:id', component: PostDetailsComponent },
   { path: 'category/:id', component: CategoryPageComponent },
+  { path: 'authors', component: AuthorsPageComponent },
+  { path: 'authors/:id', component: AuthorPageComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   // { path: "**", component: NotFoundComponent }
 ];

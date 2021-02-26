@@ -12,6 +12,9 @@ import { RecentPostsComponent } from './recent-posts/recent-posts.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { CategoryPageComponent } from './category-page/category-page.component';
 import { PostListComponent } from './post-list/post-list.component';
+import { AuthorDetailsComponent } from './author-details/author-details.component';
+import { AuthorPageComponent } from './author-page/author-page.component';
+import { AuthorsPageComponent } from './authors-page/authors-page.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +27,9 @@ import { PostListComponent } from './post-list/post-list.component';
     NavbarComponent,
     CategoryPageComponent,
     PostListComponent,
+    AuthorDetailsComponent,
+    AuthorPageComponent,
+    AuthorsPageComponent,
   ],
   imports: [
     BrowserModule,
