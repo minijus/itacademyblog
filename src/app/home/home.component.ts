@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { PostService } from '../post.service';
+import { PostsService } from '../services/posts.service';
 import { Post } from '../shared/post';
 
 @Component({
@@ -12,7 +12,7 @@ import { Post } from '../shared/post';
 export class HomeComponent implements OnInit {
   public posts: Observable<Post[]>;
 
-  constructor(private postService: PostService) {}
+  constructor(private postService: PostsService) {}
 
   ngOnInit(): void {
     this.posts = this.postService

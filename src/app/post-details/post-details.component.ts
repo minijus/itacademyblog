@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
-import { PostService } from '../post.service';
+import { PostsService } from '../services/posts.service';
 import { Post } from '../shared/post';
 
 @Component({
@@ -17,7 +17,7 @@ export class PostDetailsComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private postService: PostService
+    private postService: PostsService
   ) {}
 
   ngOnInit(): void {

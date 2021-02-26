@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { concat, Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { PostService } from '../post.service';
+import { PostsService } from '../services/posts.service';
 import { AuthorValidator } from './author.validator';
 import { blockedAuthorValidator } from './blocked-author.validator';
 import { explicitValidator } from './explicit.validator';
@@ -17,7 +17,7 @@ export class CreatePostComponent implements OnInit {
   public maxContent: number = 50;
   public charsRemaining$: Observable<number>;
 
-  constructor(private postService: PostService, private fb: FormBuilder) {}
+  constructor(private postService: PostsService, private fb: FormBuilder) {}
 
   ngOnInit() {
     this.postForm = this.fb.group(

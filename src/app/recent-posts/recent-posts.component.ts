@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { PostService } from '../post.service';
+import { PostsService } from '../services/posts.service';
 import { Post } from '../shared/post';
 
 @Component({
@@ -10,7 +10,7 @@ import { Post } from '../shared/post';
 })
 export class RecentPostsComponent implements OnInit {
   public posts$: Observable<Post[]>;
-  constructor(private postsService: PostService) {}
+  constructor(private postsService: PostsService) {}
 
   ngOnInit() {
     this.posts$ = this.postsService.getRecentPosts(5);

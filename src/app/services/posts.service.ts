@@ -2,12 +2,12 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { catchError, mapTo } from 'rxjs/operators';
-import { Post } from './shared/post';
+import { Post } from '../shared/post';
 
 @Injectable({
   providedIn: 'root',
 })
-export class PostService {
+export class PostsService {
   constructor(private httpClient: HttpClient) {}
 
   loadPosts(): Observable<Post[]> {
@@ -46,5 +46,9 @@ export class PostService {
 
   getRecentPosts(limit): Observable<Post[]> {
     return this.httpClient.get<Post[]>(`/api/posts?_sort=created&_order=desc&_start=0&_limit=${limit}`);
+  }
+
+  getMostViewedPosts(limit) {
+    return this.httpClient.get<Post[]>(`/api/posts?_sort=views&_order=desc&_start=0&_limit=${limit}`);
   }
 }

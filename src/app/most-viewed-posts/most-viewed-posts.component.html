@@ -1,0 +1,5 @@
+<ng-container *ngIf="posts$ | async as posts">
+  <h2>Most viewed posts</h2>
+  <app-post-list [posts]="posts"></app-post-list>
+  <a [routerLink]="['/home']">All posts</a>
+</ng-container>
