@@ -16,6 +16,7 @@ import { AuthorDetailsComponent } from './author-details/author-details.componen
 import { AuthorPageComponent } from './author-page/author-page.component';
 import { AuthorsPageComponent } from './authors-page/authors-page.component';
 import { MostViewedPostsComponent } from './most-viewed-posts/most-viewed-posts.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { MostViewedPostsComponent } from './most-viewed-posts/most-viewed-posts.
     AuthorPageComponent,
     AuthorsPageComponent,
     MostViewedPostsComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,

@@ -5,6 +5,7 @@ import { AuthorsPageComponent } from './authors-page/authors-page.component';
 import { CategoryPageComponent } from './category-page/category-page.component';
 import { CreatePostComponent } from './create-post/create-post.component';
 import { HomeComponent } from './home/home.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 import { PostDetailsComponent } from './post-details/post-details.component';
 
 const routes: Routes = [
@@ -15,7 +16,7 @@ const routes: Routes = [
   { path: 'authors', component: AuthorsPageComponent },
   { path: 'authors/:id', component: AuthorPageComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
-  // { path: "**", component: NotFoundComponent }
+  { path: '**', component: NotFoundComponent }
 ];
 
 @NgModule({
