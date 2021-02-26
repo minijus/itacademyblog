@@ -10,6 +10,8 @@ import { PostDetailsComponent } from './post-details/post-details.component';
 import { PostComponent } from './post/post.component';
 import { RecentPostsComponent } from './recent-posts/recent-posts.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { CategoryPageComponent } from './category-page/category-page.component';
+import { PostListComponent } from './post-list/post-list.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     RecentPostsComponent,
     CreatePostComponent,
     NavbarComponent,
+    CategoryPageComponent,
+    PostListComponent,
   ],
   imports: [
     BrowserModule,
