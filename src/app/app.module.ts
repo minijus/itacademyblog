@@ -9,6 +9,7 @@ import { HomeComponent } from './home/home.component';
 import { PostDetailsComponent } from './post-details/post-details.component';
 import { PostComponent } from './post/post.component';
 import { RecentPostsComponent } from './recent-posts/recent-posts.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { RecentPostsComponent } from './recent-posts/recent-posts.component';
     PostDetailsComponent,
     RecentPostsComponent,
     CreatePostComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
