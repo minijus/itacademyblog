@@ -29,7 +29,6 @@ export class PostService {
 
   getPost(id): Observable<Post | undefined> {
     return this.httpClient.get<Post>(`/api/posts/${id}`);
-    // .pipe(map((posts) => posts.find((post) => post.id === id)));
   }
 
   addLike(post: Post): Observable<Post> {
@@ -43,5 +42,9 @@ export class PostService {
       ...post,
       likes: post.likes - 1,
     });
+  }
+
+  getRecentPosts(limit): Observable<Post[]> {
+    return this.httpClient.get<Post[]>(`/api/posts?_sort=created&_order=desc&_start=0&_limit=${limit}`);
   }
 }

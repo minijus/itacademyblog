@@ -1,8 +1,14 @@
 export interface Post {
   id?: string;
-  author: string;
-  title: string;
-  content: string;
+  authorId: string;
+  categoryId: string;
   img?: string;
-  likes?: number;
+  fullImg?: string;
+  title: string;
+  lead?: string;
+  content: string;
+  created: number;
+  tags: string[];
+  views: number;
+  likes: number;
 }
